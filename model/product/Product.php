@@ -15,6 +15,7 @@ class Product  implements JsonSerializable
     private  $category;
     private  $stock;
     private  $imagePath;
+    private  $ratings;
 
     public function __construct($name, $description, $price, $category, $stock, $imagePath)
     {

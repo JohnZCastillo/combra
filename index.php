@@ -66,7 +66,16 @@ switch ($request) {
     case $base . 'register':
         require __DIR__ . '/controller/security/RegisterUser.php';
         break;
+    case $base . 'cart':
+        require __DIR__ . '/views/cart.php';
+        break;
+    case $base . 'category':
+        require __DIR__ . '/views/category.php';
+        break;
     case $base . 'home':
+        require __DIR__ . '/views/testHome.php';
+        break;
+    case $base . 'home?' . $_SERVER["QUERY_STRING"]:
         require __DIR__ . '/views/testHome.php';
         break;
     default:

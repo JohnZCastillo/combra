@@ -20,7 +20,17 @@ if (isset($email, $password)) {
 
         if ($user->getPassword() ===  $password && $user->getEmail() === $email) {
             unset($_SESSION['loginError']);
-            header('Location: ./home');
+
+            $role = $user->getRole();
+
+            switch ($role) {
+                case 1:
+                    header('Location: ./admin');
+                    break;
+                case 2:
+                    header('Location: ./home');
+                    break;
+            }
         } else {
             throw new Exception("");
         }

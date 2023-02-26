@@ -72,59 +72,16 @@
                     <a class="nav-link" href="#">Shop</a>
                 </li>
             </ul>
-            <div class="d-flex align-items-center justify-content-center" style="gap:10px">
-                <form method="GET" action="./home" class="search d-flex align-items-center">
-                    <input class="search-input" type="search" placeholder="search an item">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </form>
-                <i class="fa-solid fa-lg fa-cart-shopping" id="cart-icon"></i>
-                <i class="fa-solid fa-lg fa-user"></i>
-            </div>
         </div>
     </nav>
 
-    <?php
-
-    use model\product\Product;
-    use views\helper\ProductDisplayer;
-
-    $product = new Product("Test", "lorem", 12, "what", 2, "./resources/images/product.jpg");
-    ProductDisplayer::displayProduct($product);
-
-    ?>
-    <div class="container-fluid">
-        <div class="card" style="width: 300px;">
-            <img class="card-img-top" src="./resources/images/product.jpg">
-            <div class="card-body product-title">
-                <h5 class="cart-title">Lorem</h5>
-                <i class="fa-regular fa-heart"></i>
-                <i class="fa-solid fa-cart-plus"></i>
-            </div>
-            <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="card-body d-flex align-items-center">
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-            </div>
-            <div class="card-body d-flex align-items-center">
-                <i class="fa-solid fa-peso-sign"></i>
-                <p class="m-0">100</p>
-            </div>
-        </div>
+    <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height:100vh">
+        <p class="text-secondary">Your Cart is Empty</p>
     </div>
     <!-- Bootsrap -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <script>
-        const cart = document.querySelector("#cart-icon");
-        cart.addEventListener('click', (event) => {
-            window.location.replace("./cart");
-        });
-    </script>
 </body>
 
 </html>
