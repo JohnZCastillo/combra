@@ -11,16 +11,10 @@ class User
     private $email;
     private $mobile;
     private $address;
-    private $job;
-    private $area;
     private $password;
     private $status;
-    private $created;
     private $role;
-    private $facebook;
-    private $youtube;
-    private $website;
-    private $profile;
+    private $created;
 
     public function __construct($fullname, $email, $password)
     {
@@ -32,16 +26,6 @@ class User
     public function getId()
     {
         return $this->id;
-    }
-
-    public function getProfile()
-    {
-        return $this->profile;
-    }
-
-    public function setProfile($profile)
-    {
-        return $this->profile = $profile;
     }
 
     public function getFullname()
@@ -64,16 +48,6 @@ class User
         return $this->address;
     }
 
-    public function getJob()
-    {
-        return $this->job;
-    }
-
-    public function getArea()
-    {
-        return $this->area;
-    }
-
     public function getPassword()
     {
         return $this->password;
@@ -92,21 +66,6 @@ class User
     public function getRole()
     {
         return $this->role;
-    }
-
-    public function getFacebook()
-    {
-        return $this->facebook;
-    }
-
-    public function getYoutube()
-    {
-        return $this->youtube;
-    }
-
-    public function getWebsite()
-    {
-        return $this->website;
     }
 
     public function setId($id): void
@@ -134,15 +93,6 @@ class User
         $this->address = $address;
     }
 
-    public function setJob($job): void
-    {
-        $this->job = $job;
-    }
-
-    public function setArea($area): void
-    {
-        $this->area = $area;
-    }
 
     public function setPassword($password): void
     {
@@ -162,20 +112,5 @@ class User
     public function setRole($role): void
     {
         $this->role = $role;
-    }
-
-    public function setFacebook($facebook): void
-    {
-        $this->facebook = $facebook;
-    }
-
-    public function setYoutube($youtube): void
-    {
-        $this->youtube = $youtube;
-    }
-
-    public function setWebsite($website): void
-    {
-        $this->website = $website;
     }
 }

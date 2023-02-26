@@ -31,10 +31,10 @@ switch ($request) {
         require __DIR__ . '/controller/user/UpdateProfile.php';
         break;
     case $base . 'login':
-        require __DIR__ . '/views/login.php';
+        require __DIR__ . '/views/testlogin.php';
         break;
     case $base . 'signup':
-        require __DIR__ . '/views/signup.php';
+        require __DIR__ . '/views/testsignup.php';
         break;
     case $base . 'auth':
         require __DIR__ . '/controller/security/Login.php';
@@ -67,7 +67,7 @@ switch ($request) {
         require __DIR__ . '/controller/security/RegisterUser.php';
         break;
     case $base . 'home':
-        require __DIR__ . '/views/home.php';
+        require __DIR__ . '/views/testHome.php';
         break;
     default:
         http_response_code(404);
