@@ -22,9 +22,8 @@ class ProductDb
 
         $connection = Database::open();
 
-        $stmt = $connection->prepare("INSERT INTO product values(?,?,?,?,?,?,?)");
+        $stmt = $connection->prepare("INSERT INTO product (name, description, price, category, stock, image_path) values(?,?,?,?,?,?)");
 
-        $id = $product->getId();
         $name = $product->getName();
         $description = $product->getDescription();
         $price = $product->getPrice();
@@ -32,11 +31,23 @@ class ProductDb
         $stock = $product->getStock();
         $imagePath = $product->getImagePath();
 
-        $stmt->bind_param("sssssss", $id, $name, $description, $price, $category, $stock, $imagePath);
+        $stmt->bind_param("ssdsds", $name, $description, $price, $category, $stock, $imagePath);
 
         $stmt->execute();
 
         $error = mysqli_error($connection);
+
+        $stmt = $connection->prepare("select last_insert_id() as id");
+
+        $stmt->execute();
+
+        //get result
+        $result = $stmt->get_result();
+
+        // store result in array
+        $data = $result->fetch_assoc();
+
+        $product->setId($data["id"]);
 
         Database::close($connection);
 
@@ -98,35 +109,7 @@ class ProductDb
         $stock = $product->getStock();
         $imagePath = $product->getImagePath();
 
-        $stmt->bind_param("sssssss", $name, $description, $price, $category, $stock, $imagePath, $id);
-        $stmt->execute();
-
-        $error = mysqli_error($connection);
-
-        Database::close($connection);
-
-        if ($error !== null && $error !== '') {
-            throw new Exception("Update Failed | check if product exist");
-        }
-    }
-
-
-    // upaate products details on db
-    static function updateProductNoImage(Product $product)
-    {
-
-        $connection = Database::open();
-
-        $stmt = $connection->prepare("UPDATE product set name = ?, description = ?,  price = ?, category = ?,stock = ? WHERE id = ?");
-
-        $id = $product->getId();
-        $name = $product->getName();
-        $description = $product->getDescription();
-        $price = $product->getPrice();
-        $category = $product->getCategory();
-        $stock = $product->getStock();
-
-        $stmt->bind_param("ssssss", $name, $description, $price, $category, $stock, $id);
+        $stmt->bind_param("ssdsssd", $name, $description, $price, $category, $stock, $imagePath, $id);
         $stmt->execute();
 
         $error = mysqli_error($connection);

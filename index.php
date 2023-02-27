@@ -72,6 +72,15 @@ switch ($request) {
     case $base . 'category':
         require __DIR__ . '/views/category.php';
         break;
+    case $base . 'product-controller':
+        require __DIR__ . '/controller/product/ProductController.php';
+        break;
+    case $base . 'update-product':
+        require __DIR__ . '/controller/product/UpdateProduct.php';
+        break;
+    case $base . 'delete-product':
+        require __DIR__ . '/controller/product/DeleteProduct.php';
+        break;
     case $base . 'home':
         require __DIR__ . '/views/testHome.php';
         break;

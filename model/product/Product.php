@@ -15,17 +15,26 @@ class Product  implements JsonSerializable
     private  $category;
     private  $stock;
     private  $imagePath;
-    private  $ratings;
+    private  $rating;
 
     public function __construct($name, $description, $price, $category, $stock, $imagePath)
     {
-        // $this->id = Util::generateId();
         $this->name = $name;
         $this->description = $description;
         $this->price = $price;
         $this->category = $category;
         $this->stock = $stock;
         $this->imagePath = $imagePath;
+    }
+
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    public function setRating($rating)
+    {
+        return $this->rating = $rating;
     }
 
     public function getId()

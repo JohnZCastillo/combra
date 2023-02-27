@@ -6,6 +6,7 @@ require_once 'autoload.php';
 
 use db\UserDb;
 use Exception;
+use model\user\Role;
 
 session_start();
 
@@ -21,13 +22,16 @@ if (isset($email, $password)) {
         if ($user->getPassword() ===  $password && $user->getEmail() === $email) {
             unset($_SESSION['loginError']);
 
+            $_SESSION['isLogin'] = true;
             $role = $user->getRole();
 
             switch ($role) {
                 case 1:
+                    $_SESSION['userRole'] = Role::$ADMIN;
                     header('Location: ./admin');
                     break;
                 case 2:
+                    $_SESSION['loginRole'] =  Role::$USER;
                     header('Location: ./home');
                     break;
             }

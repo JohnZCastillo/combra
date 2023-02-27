@@ -85,11 +85,12 @@
 
     <?php
 
-    use model\product\Product;
+    use db\ProductDb;
     use views\helper\ProductDisplayer;
 
-    $product = new Product("Test", "lorem", 12, "what", 2, "./resources/images/product.jpg");
-    ProductDisplayer::displayProduct($product);
+    foreach (ProductDb::getAllProducts() as $product) {
+        ProductDisplayer::displayProduct($product);
+    }
 
     ?>
     <div class="container-fluid">

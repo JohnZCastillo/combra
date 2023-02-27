@@ -36,6 +36,9 @@ class ProductDisplayer
             <i class='fa-solid fa-peso-sign'></i>
             <p class='m-0'>$price</p>
         </div>
+        <div class='card-body'>        
+        <button class='btn btn-primary'>Buy Now</button>
+        </div>
     </div>";
     }
 }
