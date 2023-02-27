@@ -11,7 +11,7 @@ date_default_timezone_set("Asia/Manila");
 
 // folder inside htdocs.
 // check htaccess.
-$base = '/feetbook/';
+$base = '/combra/';
 
 // reroute request to views.
 switch ($request) {

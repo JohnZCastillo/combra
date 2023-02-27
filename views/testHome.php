@@ -51,6 +51,12 @@
         .card-body {
             padding-block: 3px !important;
         }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
     </style>
     <nav class="navbar navbar-expand-lg navbar-light bg-nav">
         <a class="navbar-brand" href="#">
@@ -83,38 +89,25 @@
         </div>
     </nav>
 
-    <?php
+    <div class="container-fluid p-3 products">
 
-    use db\ProductDb;
-    use views\helper\ProductDisplayer;
+        <?php
 
-    foreach (ProductDb::getAllProducts() as $product) {
-        ProductDisplayer::displayProduct($product);
-    }
+        use db\ProductDb;
+        use views\helper\ProductDisplayer;
 
-    ?>
-    <div class="container-fluid">
-        <div class="card" style="width: 300px;">
-            <img class="card-img-top" src="./resources/images/product.jpg">
-            <div class="card-body product-title">
-                <h5 class="cart-title">Lorem</h5>
-                <i class="fa-regular fa-heart"></i>
-                <i class="fa-solid fa-cart-plus"></i>
-            </div>
-            <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="card-body d-flex align-items-center">
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-            </div>
-            <div class="card-body d-flex align-items-center">
-                <i class="fa-solid fa-peso-sign"></i>
-                <p class="m-0">100</p>
-            </div>
-        </div>
+        try {
+            foreach (ProductDb::getAllProducts() as $product) {
+                ProductDisplayer::displayProduct($product);
+            }
+        } catch (Exception $e) {
+            echo "<p class='text-danger text-center'>No Product(s) Found</p>";
+        }
+
+
+        ?>
     </div>
+
     <!-- Bootsrap -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

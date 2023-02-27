@@ -4,15 +4,9 @@ namespace views\admin;
 
 require_once 'autoload.php';
 
-use db\TypeDb;
-use db\UserDb;
 use Exception;
 use db\ProductDb;
-use db\ServiceDb;
 use model\user\Role;
-use model\user\User;
-use views\components\TableLayout;
-use views\components\ServiceProvider;
 
 session_start();
 
@@ -59,20 +53,41 @@ if ($_SESSION["isLogin"] == false) {
             width: 100px;
             height: 100px;
         }
-    </style>
-    <div class="mx-auto" style="max-width: 1400px">
 
-        <!-- navigation -->
-        <div class="bg-dark py-4">
-            <div class="d-flex text-white align-items-center px-3 flex-wrap" style="gap: 10px">
-                <div class="flex-item btn text-light" id="side-toggle">
-                    <p class="mb-0 d-inline">Combra Online Store</p>
-                </div>
-                <div class="flex-item" style="margin-left: auto">
-                    <a class="mb-0 text-decoration-none text-white" href="./Logout.php">Logout</a>
-                </div>
-            </div>
+        .bg-nav {
+            background-color: #4aa4e4;
+        }
+
+        .nav-link {
+            padding: 10px 30px !important;
+            background-color: #138afe;
+            border-radius: 20px;
+            color: white !important;
+        }
+    </style>
+
+    <!-- navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-nav p-3">
+        <a class="navbar-brand" href="#">
+            <img src="./resources/images/store.png" width="30" height="30" alt="">
+            COMBRA ADMIN
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto" style="gap:10px">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./logout">Logout</a>
+                </li>
+            </ul>
         </div>
+    </nav>
+    <div class="mx-auto container-fluid" style="max-width: 1400px">
 
         <div class="p-2">
             <button class="btn btn-primary add-product">Add Product</button>
