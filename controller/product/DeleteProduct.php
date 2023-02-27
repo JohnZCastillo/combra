@@ -1,5 +1,6 @@
 <?php
 
+namespace controller\product;
 
 use db\ProductDb;
 use Exception;
@@ -17,6 +18,7 @@ try {
     }
 
     $id = $data['id'];
+
     //save product to database
     ProductDb::deleteProductById($id);
 
