@@ -2,7 +2,6 @@
 
 namespace model\product;
 
-use controller\util\Util;
 use JsonSerializable;
 
 class Product  implements JsonSerializable

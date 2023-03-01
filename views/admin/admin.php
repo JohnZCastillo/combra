@@ -18,13 +18,13 @@ if ($_SESSION['userRole'] != Role::$ADMIN) {
 
 if (!isset($_SESSION["isLogin"])) {
     $_SESSION["loginError"] = "You're not login!. Login First";
-    header('Location: ./Login.php');
+    header('Location: ./login');
     exit();
 }
 
 //redirect to login page if not login
 if ($_SESSION["isLogin"] == false) {
-    header('Location: ./Login.php');
+    header('Location: ./login');
     exit();
 }
 
@@ -38,7 +38,7 @@ if ($_SESSION["isLogin"] == false) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Document</title>
+    <title>Admin</title>
     <!-- Bootsrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
     <!-- fontawesoome -->
