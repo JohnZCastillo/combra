@@ -447,7 +447,10 @@ if ($_SESSION["isLogin"] == false) {
                 productWrapper.children[4].innerHTML = product.price;
                 productWrapper.children[5].innerHTML = product.category;
                 productWrapper.children[6].innerHTML = product.stock;
-                productWrapper.children[7].children[0].src = product.imagePath;
+
+                if (product.imagePath != null) {
+                    productWrapper.children[7].children[0].src = product.imagePath;
+                }
             }
         }
     </script>

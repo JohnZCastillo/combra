@@ -99,6 +99,34 @@ class ProductDb
 
         $connection = Database::open();
 
+        $stmt = $connection->prepare("UPDATE product set name = ?, description = ?,  price = ?, category = ?,stock = ? WHERE id = ?");
+
+        $id = $product->getId();
+        $name = $product->getName();
+        $description = $product->getDescription();
+        $price = $product->getPrice();
+        $category = $product->getCategory();
+        $stock = $product->getStock();
+        $imagePath = $product->getImagePath();
+
+        $stmt->bind_param("ssdssd", $name, $description, $price, $category, $stock, $id);
+        $stmt->execute();
+
+        $error = mysqli_error($connection);
+
+        Database::close($connection);
+
+        if ($error !== null && $error !== '') {
+            throw new Exception("Update Failed | check if product exist");
+        }
+    }
+
+    // upaate products details on db
+    static function updateProductImage(Product $product)
+    {
+
+        $connection = Database::open();
+
         $stmt = $connection->prepare("UPDATE product set name = ?, description = ?,  price = ?, category = ?,stock = ?, image_path = ? WHERE id = ?");
 
         $id = $product->getId();
@@ -120,6 +148,7 @@ class ProductDb
             throw new Exception("Update Failed | check if product exist");
         }
     }
+
 
     static function getAllProducts()
     {

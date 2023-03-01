@@ -11,7 +11,7 @@ session_start();
 try {
 
     // create an instance of product
-    $product = new Product($_POST['name'], $_POST['description'], $_POST['price'], $_POST['category'], $_POST['stock'],  $_POST['image']);
+    $product = new Product($_POST['name'], $_POST['description'], $_POST['price'], $_POST['category'], $_POST['stock'],  null);
 
     //update id
     $product->setId($_POST['id']);
@@ -29,10 +29,12 @@ try {
 
         // set image
         $product->setImagePath($imagePath . $imageName);
-    }
 
-    //update product to database
-    ProductDb::updateProduct($product);
+        //update product to database
+        ProductDb::updateProductImage($product);
+    } else {
+        ProductDb::updateProduct($product);
+    }
 
     //return profile name
     echo json_encode(['message' => $product]);
